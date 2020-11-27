@@ -29,12 +29,35 @@ class _ChatState extends State<Chat> {
                           style: TextStyle(color: Colors.grey, fontSize: 16.0))
                     ]),
                 subtitle: Container(
-                  padding: EdgeInsets.only(top: 5.0),
-                  child: Text(
-                    messageData[i].message,
-                    style: TextStyle(color: Colors.grey, fontSize: 15.0),
-                  ),
-                ),
+                    padding: EdgeInsets.only(top: 5.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width - 150,
+                            child: Text(
+                              messageData[i].message,
+                              overflow: TextOverflow.ellipsis,
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 15.0),
+                            ),
+                          ),
+                          if (messageData[i].mCount != "")
+                            Container(
+                              width: 20.0,
+                              height: 20.0,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xff25d366)),
+                              child: Center(
+                                child: Text(
+                                  messageData[i].mCount,
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 10.0),
+                                ),
+                              ),
+                            )
+                        ])),
                 onTap: () {},
               ),
             ]));
